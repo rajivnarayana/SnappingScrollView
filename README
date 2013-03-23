@@ -1,0 +1,23 @@
+Usage:
+
+Create a SnappingScrollView and set its adapter.(as also seen in MainActivity)
+
+		SnappingScrollView layout = new SnappingScrollView(this);
+        layout.setBackgroundColor(Color.LTGRAY);
+        layout.setAdapter(new HorizontalScrollViewAdapter() {
+			
+			@Override
+			public View getViewAtPosition(int position) {
+				TextView tv = new TextView(MainActivity.this);
+				tv.setText("This is a very long text");
+				tv.setGravity(Gravity.CENTER);
+				tv.setBackgroundColor(position%2==0?Color.WHITE:Color.DKGRAY);
+				tv.setTextColor(position%2==0?Color.BLACK:Color.WHITE);
+				return tv;
+			}
+			
+			@Override
+			public int getCount() {
+				return 4;
+			}
+		});
